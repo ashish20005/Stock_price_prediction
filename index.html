@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Price Prediction | Time Series Forecasting</title>
+  <meta
+    name="description"
+    content="A visually rich website explaining time series forecasting with a stock price prediction example using Indian market data patterns."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="site-shell">
+    <header class="hero">
+      <nav class="topbar">
+        <div class="brand">Time Series Forecasting</div>
+        <a class="nav-link" href="#forecast">View Forecast</a>
+      </nav>
+
+      <div class="hero-grid">
+        <section class="hero-copy">
+          <p class="eyebrow">Idea 3</p>
+          <h1>Stock Price Prediction for Indian Markets</h1>
+          <p class="lead">
+            Explore how historical stock prices can be transformed into actionable forecasts using
+            time series analysis. This demo uses a Reliance-inspired dataset to show how trends,
+            seasonality, and deep learning models can uncover likely price movement.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#concepts">Learn the Concepts</a>
+            <a class="button button-secondary" href="#models">Compare Models</a>
+          </div>
+        </section>
+
+        <aside class="hero-panel">
+          <div class="glass-card">
+            <p class="panel-label">Forecast Snapshot</p>
+            <div class="stat-row">
+              <div>
+                <span class="stat-title">Latest Close</span>
+                <strong>Rs. 2,927</strong>
+              </div>
+              <div>
+                <span class="stat-title">30-Day Forecast</span>
+                <strong>Rs. 3,048</strong>
+              </div>
+            </div>
+            <ul class="signal-list">
+              <li>Trend: steady bullish movement</li>
+              <li>Seasonality: monthly earnings ripple</li>
+              <li>Best fit: LSTM captures non-linear shifts</li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </header>
+
+    <main>
+      <section class="section" id="concepts">
+        <div class="section-heading">
+          <p class="eyebrow">Core Concepts</p>
+          <h2>What makes time series data different?</h2>
+        </div>
+        <div class="concept-grid">
+          <article class="info-card">
+            <h3>Trend</h3>
+            <p>
+              Trend shows the long-term direction of a stock. If Reliance moves upward for several
+              months, the model treats that as a persistent pattern rather than random noise.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Seasonality</h3>
+            <p>
+              Some price behavior repeats over fixed intervals, such as reactions around quarterly
+              results, sector-wide cycles, or recurring market sentiment windows.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Stationarity</h3>
+            <p>
+              Many forecasting models work better when the statistical properties of the series stay
+              stable over time. Differencing is often used to make data more stationary.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Lag</h3>
+            <p>
+              A lag compares today's price with previous days. Forecasting models use lagged values
+              to learn how recent history influences the next movement.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-accent" id="models">
+        <div class="section-heading">
+          <p class="eyebrow">Techniques</p>
+          <h2>Models used for forecasting stock prices</h2>
+        </div>
+        <div class="model-grid">
+          <article class="model-card">
+            <span class="model-pill">ARIMA</span>
+            <p>
+              AutoRegressive Integrated Moving Average predicts future values using past observations,
+              differencing, and error correction. It works well for strong linear patterns.
+            </p>
+          </article>
+          <article class="model-card">
+            <span class="model-pill">SARIMA</span>
+            <p>
+              Seasonal ARIMA extends ARIMA by capturing repeating cycles. It is useful when stock
+              behavior reflects periodic market or reporting rhythms.
+            </p>
+          </article>
+          <article class="model-card featured">
+            <span class="model-pill">LSTM</span>
+            <p>
+              Long Short-Term Memory networks are a type of recurrent neural network that can learn
+              longer dependencies and non-linear price dynamics. They help this project stand out.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section chart-section" id="forecast">
+        <div class="section-heading">
+          <p class="eyebrow">Visual Analysis</p>
+          <h2>Forecast vs actual performance</h2>
+        </div>
+
+        <div class="chart-layout">
+          <article class="chart-card">
+            <div class="chart-copy">
+              <h3>Historical and predicted closing price</h3>
+              <p>
+                The blue series shows actual daily closing prices, while the amber curve extends the
+                next trading sessions using a forecasted trajectory.
+              </p>
+            </div>
+            <canvas id="priceChart" aria-label="Price forecast chart"></canvas>
+          </article>
+
+          <article class="chart-card">
+            <div class="chart-copy">
+              <h3>Model comparison against actual values</h3>
+              <p>
+                This chart compares ARIMA, SARIMA, and LSTM predictions against actual market data.
+                LSTM tracks turning points more closely in this sample.
+              </p>
+            </div>
+            <canvas id="comparisonChart" aria-label="Model comparison chart"></canvas>
+          </article>
+        </div>
+      </section>
+
+      <section class="section takeaway-section">
+        <div class="takeaway-card">
+          <div>
+            <p class="eyebrow">Why this project matters</p>
+            <h2>Forecasting does not guarantee prices, but it improves decision support.</h2>
+          </div>
+          <p>
+            In real applications, stock prediction models should be combined with news signals,
+            macroeconomic indicators, and risk management rules. This website demonstrates the core
+            forecasting workflow in an understandable and presentation-ready format.
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
