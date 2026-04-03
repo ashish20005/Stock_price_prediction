@@ -18,11 +18,15 @@ const actualLabels = [
 
 const actualPrices = [2710, 2734, 2726, 2755, 2781, 2804, 2816, 2839, 2857, 2868, 2884, 2899, 2918, 2922, 2927];
 const forecastLabels = [...actualLabels, "Apr 03", "Apr 07", "Apr 11", "Apr 15", "Apr 19", "Apr 23"];
+const predictedPrices = [2706, 2728, 2732, 2749, 2770, 2794, 2810, 2831, 2850, 2862, 2879, 2893, 2910, 2918, 2931];
 const comparisonLabels = ["Day 1", "Day 2", "Day 3", "Day 4", "Day 5", "Day 6", "Day 7"];
 const comparisonActual = [2876, 2888, 2892, 2906, 2913, 2919, 2927];
 const comparisonArima = [2870, 2880, 2890, 2898, 2907, 2915, 2921];
 const comparisonSarima = [2873, 2885, 2893, 2900, 2910, 2918, 2925];
 const comparisonLstm = [2878, 2887, 2894, 2908, 2912, 2920, 2928];
+const predictionInput = document.getElementById("predictionDays");
+const predictButton = document.getElementById("predictButton");
+const predictionResults = document.getElementById("predictionResults");
 
 const chartDefaults = {
   responsive: true,
@@ -68,6 +72,38 @@ const chartDefaults = {
     }
   }
 };
+
+new Chart(document.getElementById("actualPredictedChart"), {
+  type: "line",
+  data: {
+    labels: actualLabels,
+    datasets: [
+      {
+        label: "Actual Stock Prices",
+        data: actualPrices,
+        borderColor: "#65d1ff",
+        backgroundColor: "rgba(101, 209, 255, 0.14)",
+        tension: 0.34,
+        borderWidth: 3,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        fill: false
+      },
+      {
+        label: "Predicted Stock Prices",
+        data: predictedPrices,
+        borderColor: "#ffb84d",
+        backgroundColor: "rgba(255, 184, 77, 0.14)",
+        tension: 0.34,
+        borderWidth: 3,
+        pointRadius: 3,
+        pointHoverRadius: 5,
+        fill: false
+      }
+    ]
+  },
+  options: chartDefaults
+});
 
 new Chart(document.getElementById("priceChart"), {
   type: "line",
@@ -142,4 +178,29 @@ new Chart(document.getElementById("comparisonChart"), {
     ]
   },
   options: chartDefaults
+});
+
+function renderPredictionResults(days) {
+  const latestPrice = actualPrices[actualPrices.length - 1];
+  const items = [];
+
+  for (let index = 1; index <= days; index += 1) {
+    const nextPrice = latestPrice + index * 11 + (index % 2 === 0 ? 4 : -3);
+    items.push(`<li>Day ${index}: Rs. ${nextPrice}</li>`);
+  }
+
+  predictionResults.innerHTML = `<ol class="prediction-list">${items.join("")}</ol>`;
+  predictionResults.classList.add("has-results");
+}
+
+predictButton.addEventListener("click", () => {
+  const days = Number(predictionInput.value);
+
+  if (!Number.isInteger(days) || days < 1 || days > 30) {
+    predictionResults.textContent = "Enter a valid number of days between 1 and 30.";
+    predictionResults.classList.remove("has-results");
+    return;
+  }
+
+  renderPredictionResults(days);
 });
