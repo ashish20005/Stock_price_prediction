@@ -252,6 +252,14 @@
         </div>
 
         <article class="chart-card chart-card-wide">
+          <div class="selector-row">
+            <label class="input-label" for="stockSelect">Select stock</label>
+            <select id="stockSelect" class="stock-select">
+              <option value="reliance">Reliance</option>
+              <option value="tcs">TCS</option>
+              <option value="infosys">Infosys</option>
+            </select>
+          </div>
           <div class="chart-copy">
             <h3>Actual vs Predicted Stock Prices</h3>
             <p>
@@ -295,6 +303,80 @@
             <div id="predictionResults" class="prediction-results" aria-live="polite">
               Click predict to view forecasted stock prices.
             </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="model-evaluation">
+        <div class="section-heading">
+          <p class="eyebrow">Model Evaluation</p>
+          <h2>How forecast quality is measured</h2>
+          <p class="section-intro">
+            Model evaluation helps us understand how close the predicted stock prices are to actual
+            values. Lower error values usually indicate a more reliable forecasting model.
+          </p>
+        </div>
+
+        <div class="evaluation-layout">
+          <article class="metric-card">
+            <span class="model-pill">MAE</span>
+            <h3>Mean Absolute Error</h3>
+            <p>
+              MAE measures the average absolute difference between actual and predicted values. It is
+              easy to interpret because it tells us, on average, how many price units the model is
+              away from the true stock price.
+            </p>
+            <strong class="metric-value">12.4</strong>
+          </article>
+          <article class="metric-card">
+            <span class="model-pill">RMSE</span>
+            <h3>Root Mean Squared Error</h3>
+            <p>
+              RMSE gives more weight to larger prediction errors. This makes it useful when big
+              misses matter more, such as during sudden stock movements or strong market volatility.
+            </p>
+            <strong class="metric-value">16.9</strong>
+          </article>
+          <article class="metric-card metric-card-wide">
+            <span class="model-pill">Accuracy</span>
+            <h3>How to understand model accuracy</h3>
+            <p>
+              In stock forecasting, accuracy is not always expressed as a single percentage because
+              prediction quality depends on how close the forecast is to actual prices over time.
+              Instead, evaluation focuses on error-based metrics like MAE and RMSE, along with how
+              well the model captures direction, turning points, and overall trend behavior.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-accent" id="insights">
+        <div class="section-heading">
+          <p class="eyebrow">Insights</p>
+          <h2>What the stock trend suggests</h2>
+        </div>
+
+        <div class="insights-grid">
+          <article class="insight-card">
+            <h3>Upward momentum</h3>
+            <p>
+              The sample stock series shows a gradual upward trend, suggesting positive momentum over
+              the observed period.
+            </p>
+          </article>
+          <article class="insight-card">
+            <h3>Short-term fluctuations</h3>
+            <p>
+              Small day-to-day movements indicate normal market noise, but the larger direction still
+              points upward.
+            </p>
+          </article>
+          <article class="insight-card">
+            <h3>Forecast implication</h3>
+            <p>
+              If the same pattern continues, the model expects moderate price growth, with occasional
+              pullbacks driven by volatility or market sentiment.
+            </p>
           </article>
         </div>
       </section>
