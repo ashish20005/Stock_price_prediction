@@ -3,432 +3,53 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Stock Price Prediction | Time Series Forecasting</title>
+  <title>Stock Chat</title>
   <meta
     name="description"
-    content="A visually rich website explaining time series forecasting with a stock price prediction example using Indian market data patterns."
+    content="A minimal stock query interface inspired by modern conversational UI patterns."
   >
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="site-shell">
-    <header class="hero">
-      <nav class="topbar">
-        <div class="brand">Time Series Forecasting</div>
-        <a class="nav-link" href="#forecast">View Forecast</a>
-      </nav>
-
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Idea 3</p>
-          <h1>Stock Price Prediction for Indian Markets</h1>
-          <p class="lead">
-            Explore how historical stock prices can be transformed into actionable forecasts using
-            time series analysis. This demo uses a Reliance-inspired dataset to show how trends,
-            seasonality, and deep learning models can uncover likely price movement.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#concepts">Learn the Concepts</a>
-            <a class="button button-secondary" href="#models">Compare Models</a>
-          </div>
-        </section>
-
-        <aside class="hero-panel">
-          <div class="glass-card">
-            <p class="panel-label">Forecast Snapshot</p>
-            <div class="stat-row">
-              <div>
-                <span class="stat-title">Latest Close</span>
-                <strong>Rs. 2,927</strong>
-              </div>
-              <div>
-                <span class="stat-title">30-Day Forecast</span>
-                <strong>Rs. 3,048</strong>
-              </div>
-            </div>
-            <ul class="signal-list">
-              <li>Trend: steady bullish movement</li>
-              <li>Seasonality: monthly earnings ripple</li>
-              <li>Best fit: LSTM captures non-linear shifts</li>
-            </ul>
-          </div>
-        </aside>
+  <main class="app-shell">
+    <section class="chat-home" aria-label="Stock query interface">
+      <div class="hero-copy">
+        <h1>What are you working on?</h1>
       </div>
-    </header>
 
-    <main>
-      <section class="section" id="concepts">
-        <div class="section-heading">
-          <p class="eyebrow">Core Concepts</p>
-          <h2>What makes time series data different?</h2>
-        </div>
-        <div class="concept-grid">
-          <article class="info-card">
-            <h3>Trend</h3>
-            <p>
-              Trend shows the long-term direction of a stock. If Reliance moves upward for several
-              months, the model treats that as a persistent pattern rather than random noise.
-            </p>
-          </article>
-          <article class="info-card">
-            <h3>Seasonality</h3>
-            <p>
-              Some price behavior repeats over fixed intervals, such as reactions around quarterly
-              results, sector-wide cycles, or recurring market sentiment windows.
-            </p>
-          </article>
-          <article class="info-card">
-            <h3>Stationarity</h3>
-            <p>
-              Many forecasting models work better when the statistical properties of the series stay
-              stable over time. Differencing is often used to make data more stationary.
-            </p>
-          </article>
-          <article class="info-card">
-            <h3>Lag</h3>
-            <p>
-              A lag compares today's price with previous days. Forecasting models use lagged values
-              to learn how recent history influences the next movement.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="time-series-explanation">
-        <div class="section-heading">
-          <p class="eyebrow">Time Series Explanation</p>
-          <h2>How stock forecasting data is organized and interpreted</h2>
-          <p class="section-intro">
-            Time series data is a sequence of observations recorded over time. In stock prediction,
-            each row captures how a company's market behavior changes day by day, which allows a
-            forecasting model to learn patterns from the past and estimate future prices.
-          </p>
-        </div>
-
-        <div class="explanation-grid">
-          <article class="feature-card feature-card-wide">
-            <h3>What is time series data?</h3>
-            <p>
-              Time series data stores values in chronological order. Unlike regular tabular data,
-              the order of records matters because yesterday's stock movement can influence today's
-              direction. This makes time-based dependencies central to prediction.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Trend</h3>
-            <p>
-              Trend reflects the overall upward or downward direction of the stock over a longer
-              period, helping models identify sustained growth or decline.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Seasonality</h3>
-            <p>
-              Seasonality captures repeating behavior over fixed intervals, such as reactions around
-              quarterly earnings, market cycles, or recurring investor sentiment.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Noise</h3>
-            <p>
-              Noise is the irregular short-term fluctuation caused by unexpected events, rumors, or
-              day-to-day market volatility that does not form a stable pattern.
-            </p>
-          </article>
-          <article class="feature-card">
-            <h3>Stationarity</h3>
-            <p>
-              Stationarity means the statistical behavior of the data remains fairly stable over
-              time. Models like ARIMA often perform better when the series is transformed to be more
-              stationary.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section-accent" id="models">
-        <div class="section-heading">
-          <p class="eyebrow">Techniques</p>
-          <h2>Models used for forecasting stock prices</h2>
-        </div>
-        <div class="model-grid">
-          <article class="model-card">
-            <span class="model-pill">ARIMA</span>
-            <p>
-              AutoRegressive Integrated Moving Average predicts future values using past observations,
-              differencing, and error correction. It works well for strong linear patterns.
-            </p>
-          </article>
-          <article class="model-card">
-            <span class="model-pill">SARIMA</span>
-            <p>
-              Seasonal ARIMA extends ARIMA by capturing repeating cycles. It is useful when stock
-              behavior reflects periodic market or reporting rhythms.
-            </p>
-          </article>
-          <article class="model-card featured">
-            <span class="model-pill">LSTM</span>
-            <p>
-              Long Short-Term Memory networks are a type of recurrent neural network that can learn
-              longer dependencies and non-linear price dynamics. They help this project stand out.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="models-used">
-        <div class="section-heading">
-          <p class="eyebrow">Models Used</p>
-          <h2>Why ARIMA and LSTM are common forecasting choices</h2>
-        </div>
-
-        <div class="detail-grid">
-          <article class="detail-card">
-            <span class="model-pill">ARIMA</span>
-            <h3>ARIMA for structured historical patterns</h3>
-            <p>
-              ARIMA stands for AutoRegressive Integrated Moving Average. It uses past values,
-              differencing, and forecast error relationships to estimate future data points. ARIMA
-              works well when the stock series shows relatively stable linear behavior after
-              preprocessing.
-            </p>
-          </article>
-          <article class="detail-card">
-            <span class="model-pill">LSTM</span>
-            <h3>LSTM for longer memory and non-linear patterns</h3>
-            <p>
-              LSTM is a deep learning model designed for sequential data. It can retain useful
-              information from earlier time steps and is better suited for complex, non-linear market
-              movement where traditional statistical models may miss turning points.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section-accent" id="dataset">
-        <div class="section-heading">
-          <p class="eyebrow">Dataset</p>
-          <h2>The stock data used to train and evaluate the forecast</h2>
-        </div>
-
-        <div class="dataset-layout">
-          <article class="dataset-card">
-            <h3>Fields in the dataset</h3>
-            <ul class="dataset-list">
-              <li><strong>Date</strong>: the trading day for each observation</li>
-              <li><strong>Open</strong>: the opening price at market start</li>
-              <li><strong>Close</strong>: the final traded price of the day</li>
-              <li><strong>Volume</strong>: the number of shares traded</li>
-            </ul>
-          </article>
-          <article class="dataset-card">
-            <h3>Data source</h3>
-            <p>
-              The project uses historical stock market data collected from Yahoo Finance, a common
-              source for downloading daily stock prices and trading activity for analysis and model
-              building.
-            </p>
-            <p>
-              In a full implementation, this dataset can be cleaned, normalized, and split into
-              training and testing periods before generating forecasts and comparing them with actual
-              results.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="graph-section">
-        <div class="section-heading">
-          <p class="eyebrow">Graph Section</p>
-          <h2>Actual vs predicted stock prices</h2>
-          <p class="section-intro">
-            This chart highlights how forecasted values compare with actual closing prices over the
-            same timeline. The two labeled lines make it easier to visually inspect the gap between
-            real market behavior and model output.
-          </p>
-        </div>
-
-        <article class="chart-card chart-card-wide">
-          <div class="selector-row">
-            <label class="input-label" for="stockSelect">Select stock</label>
-            <select id="stockSelect" class="stock-select">
-              <option value="reliance">Reliance</option>
-              <option value="tcs">TCS</option>
-              <option value="infosys">Infosys</option>
-            </select>
+      <form class="composer" id="chatForm">
+        <div class="composer-inner">
+          <input
+            id="chatInput"
+            class="chat-input"
+            type="text"
+            name="query"
+            placeholder="Ask about stocks..."
+            autocomplete="off"
+            aria-label="Ask about stocks"
+          >
+          <div class="composer-actions">
+            <button class="icon-button" type="button" aria-label="Microphone">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 15.25a3.75 3.75 0 0 0 3.75-3.75V7a3.75 3.75 0 0 0-7.5 0v4.5A3.75 3.75 0 0 0 12 15.25Zm-5-3.75a.75.75 0 0 1 1.5 0 3.5 3.5 0 1 0 7 0 .75.75 0 0 1 1.5 0 4.99 4.99 0 0 1-4.25 4.93V19h2a.75.75 0 0 1 0 1.5h-5.5a.75.75 0 0 1 0-1.5h2v-2.57A4.99 4.99 0 0 1 7 11.5Z"/>
+              </svg>
+            </button>
+            <button class="send-button" type="submit" aria-label="Send">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12.53 3.47a.75.75 0 0 0-1.06 0L5.97 8.97a.75.75 0 1 0 1.06 1.06l4.22-4.22V20a.75.75 0 0 0 1.5 0V5.81l4.22 4.22a.75.75 0 1 0 1.06-1.06l-5.5-5.5Z"/>
+              </svg>
+            </button>
           </div>
-          <div class="chart-copy">
-            <h3>Actual vs Predicted Stock Prices</h3>
-            <p>
-              The blue line represents actual stock prices and the amber line shows predicted prices.
-              The chart is responsive, includes a legend, and is designed to stay readable across
-              desktop and mobile screens.
-            </p>
-          </div>
-          <canvas id="actualPredictedChart" aria-label="Actual versus predicted stock prices chart"></canvas>
-        </article>
-      </section>
-
-      <section class="section section-accent" id="interactive-prediction">
-        <div class="section-heading">
-          <p class="eyebrow">Interactive Prediction</p>
-          <h2>Generate a simple stock forecast</h2>
-          <p class="section-intro">
-            Enter the number of days you want to predict and generate a sample forecast. The values
-            below use dummy logic for now, but the interface is ready for a real prediction model.
-          </p>
         </div>
+      </form>
 
-        <div class="prediction-layout">
-          <article class="prediction-card">
-            <label class="input-label" for="predictionDays">Number of days to predict</label>
-            <div class="prediction-controls">
-              <input
-                id="predictionDays"
-                class="prediction-input"
-                type="number"
-                min="1"
-                max="30"
-                value="5"
-              >
-              <button id="predictButton" class="button button-primary" type="button">Predict</button>
-            </div>
-          </article>
+      <section class="messages" id="messages" aria-live="polite"></section>
+    </section>
+  </main>
 
-          <article class="prediction-card">
-            <h3>Predicted values</h3>
-            <div id="predictionResults" class="prediction-results" aria-live="polite">
-              Click predict to view forecasted stock prices.
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section" id="model-evaluation">
-        <div class="section-heading">
-          <p class="eyebrow">Model Evaluation</p>
-          <h2>How forecast quality is measured</h2>
-          <p class="section-intro">
-            Model evaluation helps us understand how close the predicted stock prices are to actual
-            values. Lower error values usually indicate a more reliable forecasting model.
-          </p>
-        </div>
-
-        <div class="evaluation-layout">
-          <article class="metric-card">
-            <span class="model-pill">MAE</span>
-            <h3>Mean Absolute Error</h3>
-            <p>
-              MAE measures the average absolute difference between actual and predicted values. It is
-              easy to interpret because it tells us, on average, how many price units the model is
-              away from the true stock price.
-            </p>
-            <strong class="metric-value">12.4</strong>
-          </article>
-          <article class="metric-card">
-            <span class="model-pill">RMSE</span>
-            <h3>Root Mean Squared Error</h3>
-            <p>
-              RMSE gives more weight to larger prediction errors. This makes it useful when big
-              misses matter more, such as during sudden stock movements or strong market volatility.
-            </p>
-            <strong class="metric-value">16.9</strong>
-          </article>
-          <article class="metric-card metric-card-wide">
-            <span class="model-pill">Accuracy</span>
-            <h3>How to understand model accuracy</h3>
-            <p>
-              In stock forecasting, accuracy is not always expressed as a single percentage because
-              prediction quality depends on how close the forecast is to actual prices over time.
-              Instead, evaluation focuses on error-based metrics like MAE and RMSE, along with how
-              well the model captures direction, turning points, and overall trend behavior.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section section-accent" id="insights">
-        <div class="section-heading">
-          <p class="eyebrow">Insights</p>
-          <h2>What the stock trend suggests</h2>
-        </div>
-
-        <div class="insights-grid">
-          <article class="insight-card">
-            <h3>Upward momentum</h3>
-            <p>
-              The sample stock series shows a gradual upward trend, suggesting positive momentum over
-              the observed period.
-            </p>
-          </article>
-          <article class="insight-card">
-            <h3>Short-term fluctuations</h3>
-            <p>
-              Small day-to-day movements indicate normal market noise, but the larger direction still
-              points upward.
-            </p>
-          </article>
-          <article class="insight-card">
-            <h3>Forecast implication</h3>
-            <p>
-              If the same pattern continues, the model expects moderate price growth, with occasional
-              pullbacks driven by volatility or market sentiment.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section chart-section" id="forecast">
-        <div class="section-heading">
-          <p class="eyebrow">Visual Analysis</p>
-          <h2>Forecast vs actual performance</h2>
-        </div>
-
-        <div class="chart-layout">
-          <article class="chart-card">
-            <div class="chart-copy">
-              <h3>Historical and predicted closing price</h3>
-              <p>
-                The blue series shows actual daily closing prices, while the amber curve extends the
-                next trading sessions using a forecasted trajectory.
-              </p>
-            </div>
-            <canvas id="priceChart" aria-label="Price forecast chart"></canvas>
-          </article>
-
-          <article class="chart-card">
-            <div class="chart-copy">
-              <h3>Model comparison against actual values</h3>
-              <p>
-                This chart compares ARIMA, SARIMA, and LSTM predictions against actual market data.
-                LSTM tracks turning points more closely in this sample.
-              </p>
-            </div>
-            <canvas id="comparisonChart" aria-label="Model comparison chart"></canvas>
-          </article>
-        </div>
-      </section>
-
-      <section class="section takeaway-section">
-        <div class="takeaway-card">
-          <div>
-            <p class="eyebrow">Why this project matters</p>
-            <h2>Forecasting does not guarantee prices, but it improves decision support.</h2>
-          </div>
-          <p>
-            In real applications, stock prediction models should be combined with news signals,
-            macroeconomic indicators, and risk management rules. This website demonstrates the core
-            forecasting workflow in an understandable and presentation-ready format.
-          </p>
-        </div>
-      </section>
-    </main>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
